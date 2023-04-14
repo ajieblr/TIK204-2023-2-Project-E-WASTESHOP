@@ -17,6 +17,7 @@ def singUp():
 
 @app.route('/login', methods=["POST"])
 def login():
+  print("Login")
   username = request.form["username"]
   email = request.form["email"]
   password = request.form["password"]
@@ -35,6 +36,7 @@ def login():
   
   if password == rpassword:
      tambahUser(username, email, password)
+     print("Berhasil")
      return render_template('login.j2') # mengarahkan ke halaman berikutnya
   else:
     error = "Password tidak sama"
