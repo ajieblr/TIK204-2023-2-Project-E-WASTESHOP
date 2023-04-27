@@ -39,3 +39,8 @@ body {
 .btn-primary{
     display: inline;
 }
+
+.error{
+	color: red;
+	text-align: center;
+}
