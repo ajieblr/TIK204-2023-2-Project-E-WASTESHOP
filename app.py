@@ -1,63 +1,93 @@
-from flask import Flask
-from flask import render_template
-from flask import request
+from flask import Flask,redirect, url_for, render_template, request
 
 import sqlite3
 from basisdata import *
 
-
 app = Flask(__name__,
             template_folder='templates',
-	        static_folder='static')
+	          static_folder='static')
 
-@app.route('/')
-def singUp():
-  error = ""
-  return render_template('signUp.j2', error=error)
+@app.route('/', methods=['GET', 'POST'])
+def signup():
+    if request.method == 'POST':
+        # Ambil data dari form signup
+        username = request.form['username']
+        email = request.form['email']
+        password = request.form['password']
+        repeat_password = request.form['rpassword']
 
-@app.route('/login', methods=["POST"])
+        # Validasi data
+        if password != repeat_password:
+            error = 'Password tidak sama'
+            return render_template('signup.j2', error=error)
+
+        # Tambahkan user baru ke database
+        User.tambahUser(username, email, password)
+
+        # Redirect ke halaman login
+        return redirect(url_for('login'))
+
+    # Tampilkan halaman signup
+    return render_template('signUp.j2')
+
+@app.route('/login', methods=['GET', 'POST'])
 def login():
-  print("Login")
-  username = request.form["username"]
-  email = request.form["email"]
-  password = request.form["password"]
-  rpassword = request.form["rpassword"]
+    if request.method == 'POST':
+        # Ambil data dari form login
+        username = request.form['username']
+        password = request.form['password']
 
-  daftarUsername = User.daftarUsername()
-  daftarEmail = User.daftarEmail()
+        # Cari user di database
+        try:
+            pswd = User.cekPassword(username)
+            # Validasi user
+            if password == pswd:
+                # Redirect ke halaman home jika user valid
+                return redirect(url_for('home'))
+            else:
+                error = 'Password salah'
+                return render_template('login.j2', error=error)
+        except:
+            error = 'Username salah'
+            return render_template('login.j2', error=error)
 
-  if username in daftarUsername:
-    error = "Username sudah terpakai"
-    return render_template('signUp.j2', error=error)
-  
-  if email in daftarEmail:
-    error = "Email sudah terpakai"
-    return render_template('signUp.j2', error=error)
-  
-  if password == rpassword:
-     tambahUser(username, email, password)
-     print("Berhasil")
-     return render_template('login.j2') # mengarahkan ke halaman berikutnya
-  else:
-    error = "Password tidak sama"
-    return render_template('signUp.j2', error=error) # menampilkan pesan kesalahan pada halaman yang sama
+    # Tampilkan halaman login
+    return render_template('login.j2')
 
-@app.route('/home', methods=["POST"])
+@app.route('/home')
 def home():
-  username = request.form["username"]
-  password = request.form["password"]
-  
-  daftarUsername = User.daftarUsername()
-  # cek username dan password 
-  if username in daftarUsername:
-    if password == User.cekPassword(username):
-      return render_template('home.j2', username=username)
-    
-  
-    
+    return render_template('home.j2')
+    print('Selamat datang di halaman home') 
 
+@app.route('/forgot_password', methods=['GET', 'POST'])
+def forgotPass():
+    import smtplib
+    if request.method == 'POST':
+        # Ambil data dari form login
+        email = request.form['email']
+
+        password = User.cekPasswordDgEmail(email)
+
+        sender_email = "aufarafi21@mhs.unsyiah.ac.id"
+        sender_password = "Aufarafi21@mhs.unsyiah.ac.id"
+        try:
+            smtp_server = smtplib.SMTP('smtp.mhs.unsyiah.ac.id', 587)
+            smtp_server.starttls()
+            smtp_server.login(sender_email, sender_password)
+            print(1)
+
+            msg = f'Subject: Kiriman Password\n\nYour Password: {password}'
+            smtp_server.sendmail(sender_email, email, msg)
+
+            smtp_server.quit()
+            return redirect(url_for('login'))
+        except:
+            print('gagal')
+            return render_template('signUp.j2')
+
+    return render_template('lupaPassword.j2')
 if __name__ == '__main__':
   app.run(host='0.0.0.0', 
-          port=8000,
+          port=8001,
           debug=True)
 app
