@@ -115,3 +115,13 @@ class User:
 
     return hasil[0]
   
+  def cekPasswordDgEmail(email):
+    koneksi = sqlite3.connect("EWS.db")
+
+    sql = "SELECT password FROM user where email=?;"
+    kursor = koneksi.execute(sql, (email, ))
+    hasil = kursor.fetchone()
+  
+    koneksi.close()
+    print(hasil[0])
+    return hasil[0]
