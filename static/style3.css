@@ -1,0 +1,37 @@
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  .card {
+    width: 30%;
+    margin-bottom: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    text-align: center;
+  }
+  
+  .card img {
+    width: 100%;
+    height: auto;
+  }
+  
+  .card h2 {
+    margin-top: 10px;
+    font-size: 18px;
+  }
+  
+  .card .harga {
+    font-size: 16px;
+    font-weight: bold;
+    color: #f00;
+    margin-top: 10px;
+  }
+  
+  .card .penilaian {
+    font-size: 14px;
+    color: #777;
+    margin-top: 5px;
+  }
+  
