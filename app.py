@@ -8,29 +8,6 @@ app = Flask(__name__,
 	          static_folder='static')
 
 @app.route('/', methods=['GET', 'POST'])
-def signup():
-    if request.method == 'POST':
-        # Ambil data dari form signup
-        username = request.form['username']
-        email = request.form['email']
-        password = request.form['password']
-        repeat_password = request.form['rpassword']
-
-        # Validasi data
-        if password != repeat_password:
-            error = 'Password tidak sama'
-            return render_template('signup.j2', error=error)
-
-        # Tambahkan user baru ke database
-        User.tambahUser(username, email, password)
-
-        # Redirect ke halaman login
-        return redirect(url_for('login'))
-
-    # Tampilkan halaman signup
-    return render_template('signUp.j2')
-
-@app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
         # Ambil data dari form login
@@ -54,9 +31,40 @@ def login():
     # Tampilkan halaman login
     return render_template('login.j2')
 
+@app.route('/daftar', methods=['GET', 'POST'])
+def signup():
+    if request.method == 'POST':
+        # Ambil data dari form signup
+        username = request.form['username']
+        email = request.form['email']
+        password = request.form['password']
+        repeat_password = request.form['rpassword']
+
+        if username in User.daftarUsername():
+            error = 'Username sudah digunakan'
+            return render_template('signup.j2', error=error)
+        
+        if username in User.daftarEmail():
+            error = 'Email sudah digunakan'
+            return render_template('signup.j2', error=error)
+        
+        # Validasi data
+        if password != repeat_password:
+            error = 'Password tidak sama'
+            return render_template('signup.j2', error=error)
+
+        # Tambahkan user baru ke database
+        User.tambahUser(username, email, password)
+
+        # Redirect ke halaman login
+        return redirect(url_for('home'))
+
+    # Tampilkan halaman signup
+    return render_template('signUp.j2')
+
 @app.route('/home')
 def home():
-    return render_template('home.j2')
+    return render_template('index.html')
     print('Selamat datang di halaman home') 
 
 @app.route('/forgot_password', methods=['GET', 'POST'])
