@@ -1,4 +1,5 @@
-from flask import Flask,redirect, url_for, render_template, request
+from flask import Flask,redirect, url_for, render_template, request, session
+from functools import wraps
 
 import sqlite3
 from basisdata import *
@@ -6,6 +7,8 @@ from basisdata import *
 app = Flask(__name__,
             template_folder='templates',
 	          static_folder='static')
+
+app.secret_key = 'secret_key'
 
 @app.route('/', methods=['GET', 'POST'])
 def login():
@@ -19,6 +22,7 @@ def login():
             pswd = User.cekPassword(username)
             # Validasi user
             if password == pswd:
+                session['username'] = username
                 # Redirect ke halaman home jika user valid
                 return redirect(url_for('home'))
             else:
@@ -62,10 +66,31 @@ def signup():
     # Tampilkan halaman signup
     return render_template('signUp.j2')
 
+# fungsi untuk logout
+@app.route('/logout')
+def logout():
+    session.pop('username', None)
+    return redirect(url_for('login'))
+
+# decorator untuk memeriksa apakah pengguna sudah login atau belum
+def login_required(f):
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        if 'username' not in session:
+            return redirect(url_for('login'))
+        return f(*args, **kwargs)
+    return decorated_function
+
 @app.route('/home')
 def home():
-    return render_template('index.html')
+    return render_template('home.j2', username=session['username'])
     print('Selamat datang di halaman home') 
+
+@app.route('/toko', methods=['GET', 'POST'])
+def toko():
+    if request.method == 'POST':
+        pass
+    return render_template('toko.j2', username=session['username'])
 
 @app.route('/forgot_password', methods=['GET', 'POST'])
 def forgotPass():
@@ -94,6 +119,8 @@ def forgotPass():
             return render_template('signUp.j2')
 
     return render_template('lupaPassword.j2')
+
+
 if __name__ == '__main__':
   app.run(host='0.0.0.0', 
           port=8001,
