@@ -1,0 +1,195 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+  }
+  
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #fff;
+    height: 60px;
+    box-shadow: 0px 4px 37px 
+  }
+  
+  .nav-left {
+    padding-left: 60px;
+  }
+  
+  .nav-left a {
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
+    color: orangered;
+  }
+  
+  .nav-center {
+    flex-grow: 1;
+  }
+  
+  .nav-center ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .nav-center li {
+    margin: 0 10px;
+  }
+  
+  .nav-center a {
+    display: block;
+    font-size: 18px;
+    text-decoration: none;
+    color: #333;
+    padding: 10px 20px;
+  }
+  
+  .nav-center a.active,
+  .nav-center a:hover {
+    background-color: #1E3050;
+    color: #fff;
+    border-radius: 8px;
+  }
+  
+  .nav-right {
+    display: flex;
+    align-items: center;
+    padding-right: 20px;
+  }
+  
+  .nav-right a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    background-color: #eee;
+    margin-left: 10px;
+    text-decoration: none;
+    color: #333;
+  }
+  
+  .nav-right i {
+    font-size: 18px;
+  }
+
+  .judul {
+    position: absolute;
+    width: 438px;
+    height: 49px;
+    left: calc(50% - 438px/2);
+    top: 100px;
+
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 36px;
+    line-height: 49px;
+    letter-spacing: 0.05em;
+
+    color: #1E3050;
+  }
+
+  .barang-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 130px 140px 0 140px;
+  }
+  
+  .barang-card {
+    padding: 10px;
+    width: calc(33.33% - 40.5px);
+    margin-bottom: 30px;
+    text-align: center;
+    position: relative;
+    background: #D9D9D9;
+    box-shadow: 0px 4px 15px;
+    border-radius: 11px;
+  }
+  .barang-card a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    background-color: #eee;
+    float: right;
+    text-decoration: none;
+    color: #333;
+  }
+  .barang-card img {
+    width: 100%;
+    height: auto;
+    clear: both;
+  }
+  
+  .barang-card h4 {
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 30px;
+    letter-spacing: 0.05em;
+    color: #1E3050;
+    float: left;
+  }
+  
+  .barang-card .rating {
+    clear: both;
+    float: left;
+  }
+  
+  .barang-card .buy-box {
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin-top: 15px;
+    width: 60px;
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    border-radius: 3px;
+    background-color: #1E3050;
+    clear: both;
+    float: left;
+    color: #fff;
+  }
+  
+  
+  .barang-card .harga {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 10px;
+    float: right;
+    color: #1E3050;
+  }
+  
+  .load{
+    margin: 0 auto;
+    background-color: #1E3050;
+    width: 150px;
+    border-radius: 8px;
+    padding: 10px;
+  }
+
+  .load a{
+    font-family: "Nunito";
+    text-decoration: none;
+    font-size: 24px;
+    color: #fff;
+    /* margin: 10px; */
+  }
+
+  .load p{
+    text-align: center;
+  }
