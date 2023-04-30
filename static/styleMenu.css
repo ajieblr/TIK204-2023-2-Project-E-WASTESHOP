@@ -82,19 +82,17 @@ body {
   }
 
   .judul {
-    position: absolute;
-    width: 438px;
+    text-align: center;
+    width: 40%;
     height: 49px;
-    left: calc(50% - 438px/2);
-    top: 100px;
-
+    padding: 0;
+    margin: 50px 30% 0 30%;
     font-family: 'Nunito';
     font-style: normal;
     font-weight: 800;
-    font-size: 36px;
+    font-size: 30px;
     line-height: 49px;
     letter-spacing: 0.05em;
-
     color: #1E3050;
   }
 
@@ -102,7 +100,7 @@ body {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    margin: 130px 140px 0 140px;
+    margin: 50px 140px 0 140px;
   }
   
   .barang-card {
@@ -187,9 +185,68 @@ body {
     text-decoration: none;
     font-size: 24px;
     color: #fff;
-    /* margin: 10px; */
   }
 
   .load p{
     text-align: center;
+  }
+
+  .sub-judul {
+    text-align: center;
+    width: 80%;
+    height: 49px;
+    padding: 0;
+    margin: 0px 10% 0 10%;
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 20px;
+    line-height: 49px;
+    letter-spacing: 0.05em;
+    color: #0F6292;
+  }
+
+  .tentang-kami{
+    background-color: #E5E5E5;
+    padding: 30px 140px;
+    margin-top: 50px;
+  }
+  
+  .judul-info{
+    margin: 20px;
+  }
+
+  .judul-info .judul{
+    margin-top: 10px;
+  }
+
+  .cerita {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+  }
+
+  .gambar-cerita{
+    flex-basis: 40%;
+  }
+
+  .isi-cerita{
+    flex-basis: 60%;
+  }
+
+  .isi-cerita .sub-judul{
+    text-align: left;
+    font-weight:bold;
+  }
+
+  .isi-cerita p{
+    text-align: left;
+    width: 80%;
+    height: 49px;
+    padding: 0;
+    margin: 0px 10% 0 10%;
+    font-family: 'Nunito';
+    font-style: normal;
+    font-size: 20px;
+    color: black;
   }
