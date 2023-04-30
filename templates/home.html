@@ -37,7 +37,7 @@
     <div class="barang-container">
       <div class="barang-card">
         <a href="#"><img src="{{ url_for('static', filename='image/suka.png') }}" alt="suka" style="max-width: 50%; height: 50%;"></a>
-        <img src="barang.png" alt="keranjang" style="max-width: 50%; height: 50%;">
+        <img src="{{ url_for('static', filename='image/barang.png') }}" alt="barang" style="max-width: 50%; height: 50%;">
         <h4>Nama Barang 1</h4>
         <div class="rating">4.5/5</div>
         <div class="buy-box">
@@ -48,7 +48,7 @@
       
       <div class="barang-card">
         <a href="#"><img src="{{ url_for('static', filename='image/suka.png') }}" alt="suka" style="max-width: 50%; height: 50%;"></a>
-        <img src="barang.png" alt="keranjang" style="max-width: 50%; height: 50%;">
+        <img src="{{ url_for('static', filename='image/barang.png') }}" alt="barang" style="max-width: 50%; height: 50%;">
         <h4>Nama Barang 2</h4>
         <div class="rating">4.5/5</div>
         <div class="buy-box">
@@ -59,7 +59,7 @@
       
       <div class="barang-card">
         <a href="#"><img src="{{ url_for('static', filename='image/suka.png') }}" alt="suka" style="max-width: 50%; height: 50%;"></a>
-        <img src="barang.png" alt="keranjang" style="max-width: 50%; height: 50%;">
+        <img src="{{ url_for('static', filename='image/barang.png') }}" alt="barang" style="max-width: 50%; height: 50%;">
         <h4>Nama Barang 3</h4>
         <div class="rating">4.5/5</div>
         <div class="buy-box">
@@ -70,7 +70,7 @@
       
       <div class="barang-card">
         <a href="#"><img src="{{ url_for('static', filename='image/suka.png') }}" alt="suka" style="max-width: 50%; height: 50%;"></a>
-        <img src="barang.png" alt="keranjang" style="max-width: 50%; height: 50%;">
+        <img src="{{ url_for('static', filename='image/barang.png') }}" alt="barang" style="max-width: 50%; height: 50%;">
         <h4>Nama Barang 1</h4>
         <div class="rating">4.5/5</div>
         <div class="buy-box">
@@ -81,7 +81,7 @@
       
       <div class="barang-card">
         <a href="#"><img src="{{ url_for('static', filename='image/suka.png') }}" alt="suka" style="max-width: 50%; height: 50%;"></a>
-        <img src="barang.png" alt="keranjang" style="max-width: 50%; height: 50%;">
+        <img src="{{ url_for('static', filename='image/barang.png') }}" alt="barang" style="max-width: 50%; height: 50%;">
         <h4>Nama Barang 2</h4>
         <div class="rating">4.5/5</div>
         <div class="buy-box">
@@ -92,7 +92,7 @@
       
       <div class="barang-card">
         <a href="#"><img src="{{ url_for('static', filename='image/suka.png') }}" alt="suka" style="max-width: 50%; height: 50%;"></a>
-        <img src="barang.png" alt="keranjang" style="max-width: 50%; height: 50%;">
+        <img src="{{ url_for('static', filename='image/barang.png') }}" alt="barang" style="max-width: 50%; height: 50%;">
         <h4>Nama Barang 3</h4>
         <div class="rating">4.5/5</div>
         <div class="buy-box">
@@ -100,15 +100,26 @@
         </div>
         <p class="harga">Rp 300.000</p>
       </div>
-
-      <!-- Menampilkan 6 card lainnya -->
-      <!-- ... -->
     </div>
 
     <div class="load">
       <p><a href="#">Load More</a></p>
     </div>
     
+    <div class="tentang-kami">
+      <div class="judul-info">
+        <div class="judul">TENTANG KAMI</div>
+        <div class="sub-judul">Layanan Pengelolaan Sampah Masyarakat</div>
+      </div>
+      <div class="cerita">
+        <div class="gambar-cerita">
+          <img src="{{ url_for('static', filename='image/gambar-cerita.png') }}" alt="Save Earth" style="max-width: 100%; height: 100%;">
+        </div>
+        <div class="isi-cerita">
+          <img src="{{ url_for('static', filename='image/gambar-cerita.png') }}" alt="Save Earth" style="max-width: 100%; height: 100%;">
+        </div>
+      </div>
+    </div>
     
   </header>      
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
