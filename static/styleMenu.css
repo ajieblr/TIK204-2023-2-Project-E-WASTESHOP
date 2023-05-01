@@ -1,11 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
 
 body {
     margin: 0;
     padding: 0;
-    /* display: flex;
-    justify-content: center;
-    align-items: center; */
+    font-family: 'Montserrat', sans-serif;
   }
   
   nav {
@@ -92,7 +92,7 @@ body {
     height: 49px;
     padding: 0;
     margin: 100px 30% 0 30%;
-    font-family: 'Nunito';
+    font-family: 'Montserrat', sans-serif;
     font-style: normal;
     font-weight: 800;
     font-size: 30px;
@@ -202,7 +202,7 @@ body {
     height: 49px;
     padding: 0;
     margin: 0px 10% 0 10%;
-    font-family: 'Nunito';
+    font-family: 'Montserrat', sans-serif;
     font-style: normal;
     font-weight: 800;
     font-size: 20px;
