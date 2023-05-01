@@ -3,11 +3,16 @@
 body {
     margin: 0;
     padding: 0;
-    display: flex;
+    /* display: flex;
     justify-content: center;
+    align-items: center; */
   }
   
   nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -86,7 +91,7 @@ body {
     width: 40%;
     height: 49px;
     padding: 0;
-    margin: 50px 30% 0 30%;
+    margin: 100px 30% 0 30%;
     font-family: 'Nunito';
     font-style: normal;
     font-weight: 800;
@@ -108,7 +113,7 @@ body {
     width: calc(33.33% - 40.5px);
     margin-bottom: 30px;
     text-align: center;
-    position: relative;
+    /* position: relative; */
     background: #D9D9D9;
     box-shadow: 0px 4px 15px;
     border-radius: 11px;
@@ -210,6 +215,7 @@ body {
     background-color: #E5E5E5;
     padding: 30px 140px;
     margin-top: 50px;
+    padding-bottom: 100px;
   }
   
   .judul-info{
@@ -237,16 +243,59 @@ body {
   .isi-cerita .sub-judul{
     text-align: left;
     font-weight:bold;
+    margin-bottom: 10px;
   }
 
   .isi-cerita p{
     text-align: left;
-    width: 80%;
-    height: 49px;
+    width: 90%;
     padding: 0;
-    margin: 0px 10% 0 10%;
+    margin: 0 0 0 10%;
     font-family: 'Nunito';
     font-style: normal;
     font-size: 20px;
     color: black;
+    line-height: 40px;
+  }
+
+  footer{
+    background-color: #1E3050;
+    color: white;
+  }
+
+  footer .judul {
+    color: white;
+    font-size: 22px;
+    width: 100%;
+    margin: 0;
+  }
+
+  .info {
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+  }
+
+  .satu-info {
+    flex-basis: 25%;
+    margin: 0;
+  }
+
+  footer p {
+    width: 100%;
+    text-align: center;
+    margin: 0;
+  }
+
+  footer ul{
+    margin: 0;
+    margin-top: 10px;
+    padding: 0;
+  }
+
+  .copy{
+    margin-top: 40px;
+    text-align: center;
+    font-size: 12px;
+    padding-bottom: 10px;
   }
