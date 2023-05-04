@@ -1,13 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
 
 body {
     margin: 0;
     padding: 0;
-    display: flex;
-    justify-content: center;
+    font-family: 'Montserrat', sans-serif;
   }
   
   nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -53,7 +58,7 @@ body {
   
   .nav-center a.active,
   .nav-center a:hover {
-    background-color: #1E3050;
+    background-color: #0F6292;
     color: #fff;
     border-radius: 8px;
   }
@@ -86,14 +91,14 @@ body {
     width: 40%;
     height: 49px;
     padding: 0;
-    margin: 50px 30% 0 30%;
-    font-family: 'Nunito';
+    margin: 100px 30% 0 30%;
+    font-family: 'Montserrat', sans-serif;
     font-style: normal;
     font-weight: 800;
     font-size: 30px;
     line-height: 49px;
     letter-spacing: 0.05em;
-    color: #1E3050;
+    color: #0F6292;
   }
 
   .barang-container {
@@ -108,7 +113,7 @@ body {
     width: calc(33.33% - 40.5px);
     margin-bottom: 30px;
     text-align: center;
-    position: relative;
+    /* position: relative; */
     background: #D9D9D9;
     box-shadow: 0px 4px 15px;
     border-radius: 11px;
@@ -138,7 +143,7 @@ body {
     font-size: 22px;
     line-height: 30px;
     letter-spacing: 0.05em;
-    color: #1E3050;
+    color: #0F6292;
     float: left;
   }
   
@@ -157,7 +162,7 @@ body {
     justify-content: center; 
     align-items: center; 
     border-radius: 3px;
-    background-color: #1E3050;
+    background-color: #0F6292;
     clear: both;
     float: left;
     color: #fff;
@@ -169,12 +174,12 @@ body {
     font-weight: bold;
     margin-top: 10px;
     float: right;
-    color: #1E3050;
+    color: #0F6292;
   }
   
   .load{
     margin: 0 auto;
-    background-color: #1E3050;
+    background-color: #0F6292;
     width: 150px;
     border-radius: 8px;
     padding: 10px;
@@ -197,19 +202,21 @@ body {
     height: 49px;
     padding: 0;
     margin: 0px 10% 0 10%;
-    font-family: 'Nunito';
+    font-family: 'Montserrat', sans-serif;
     font-style: normal;
     font-weight: 800;
     font-size: 20px;
     line-height: 49px;
     letter-spacing: 0.05em;
-    color: #0F6292;
+    color: #1E3050;
+    font-weight: bold;
   }
 
   .tentang-kami{
     background-color: #E5E5E5;
     padding: 30px 140px;
     margin-top: 50px;
+    padding-bottom: 100px;
   }
   
   .judul-info{
@@ -237,16 +244,59 @@ body {
   .isi-cerita .sub-judul{
     text-align: left;
     font-weight:bold;
+    margin-bottom: 10px;
   }
 
   .isi-cerita p{
     text-align: left;
-    width: 80%;
-    height: 49px;
+    width: 90%;
     padding: 0;
-    margin: 0px 10% 0 10%;
+    margin: 0 0 0 10%;
     font-family: 'Nunito';
     font-style: normal;
     font-size: 20px;
     color: black;
+    line-height: 40px;
+  }
+
+  footer{
+    background-color: #0F6292;
+    color: white;
+  }
+
+  footer .judul {
+    color: white;
+    font-size: 22px;
+    width: 100%;
+    margin: 0;
+  }
+
+  .info {
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+  }
+
+  .satu-info {
+    flex-basis: 25%;
+    margin: 0;
+  }
+
+  footer p {
+    width: 100%;
+    text-align: center;
+    margin: 0;
+  }
+
+  footer ul{
+    margin: 0;
+    margin-top: 10px;
+    padding: 0;
+  }
+
+  .copy{
+    margin-top: 40px;
+    text-align: center;
+    font-size: 12px;
+    padding-bottom: 10px;
   }
