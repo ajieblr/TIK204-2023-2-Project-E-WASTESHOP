@@ -1,5 +1,6 @@
 from flask import Flask,redirect, url_for, render_template, request, session
 from functools import wraps
+import os
 
 import sqlite3
 from basisdata import *
@@ -89,8 +90,26 @@ def home():
 @app.route('/toko', methods=['GET', 'POST'])
 def toko():
     if request.method == 'POST':
-        pass
+        username=session['username']
+        nama = request.form['nama']
+        filename = request.files['gambar']
+        harga = request.form['harga']
+        deskripsi = request.form['deskripsi']
+        filename.save('static/' + filename.filename)
+
+        Gambar.tambahGambar(username, filename.filename, nama, harga, deskripsi)
+        print("berhasil masuk ke dtbse")
+        
+        return render_template('a.j2', file_name=filename.filename, username=session['username'])
+
     return render_template('toko.j2', username=session['username'])
+
+
+
+
+
+
+
 
 @app.route('/forgot_password', methods=['GET', 'POST'])
 def forgotPass():
