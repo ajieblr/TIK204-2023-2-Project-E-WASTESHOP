@@ -32,6 +32,15 @@ class Gambar:
         koneksi.commit()
         koneksi.close()
 
+    def ambilSatuBarang (id):
+        conn = sqlite3.connect('EWS.db')
+        cursor = conn.cursor()
+        cursor.execute('SELECT gambar, nama, harga, deskripsi, id FROM gambar WHERE id = ?', (id,))
+        row = cursor.fetchone()
+        conn.close()
+
+        return row
+    
     def ambilBarangSatuToko (username):
         conn = sqlite3.connect('EWS.db')
         cursor = conn.cursor()
@@ -49,3 +58,4 @@ class Gambar:
         conn.close()
 
         return rows
+    
