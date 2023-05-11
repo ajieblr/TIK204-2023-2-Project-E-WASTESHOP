@@ -272,6 +272,8 @@ header .icons #menu-bar{
 
 .detail-barang .kiri{
     flex-basis: 30%;
+    /* background-color: #0F6292; */
+    margin-right: 2%;
     /* border: #0F6292 solid 1px; */
 }
 
@@ -548,6 +550,7 @@ header .icons #menu-bar{
     border-radius: 5px;
     cursor: pointer;
 }
+
 
 
 
