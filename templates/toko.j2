@@ -20,7 +20,7 @@
     <a href="#" class="logo"><i class="fas fa-trash"></i>waste.</a>
     <nav class="navbar">
       <a href="/home">Produk</a>
-      <a href="#tabl" id="penjualan-show">Penjualan</a>
+      <a class="active" href="#tabl" id="penjualan-show">Penjualan</a>
       <a href="#about">about</a>
     </nav>
     <div class="icons">
@@ -30,6 +30,9 @@
       <a href="#" class="fas fa-shopping-cart"></a>
     </div>
   </header>
+
+  <div class="judul">PRODUK SAYA</div>
+  <button id="tambah-barang">Tambah Barang</button>
   <!-- <form action="toko/edit_barang" method="POST"></form> -->
     {% if semuaData %}
       <table id="tabl">
@@ -50,8 +53,8 @@
               <td><p>{{ satuData[2] }}</p></td>
               <td><p>{{ satuData[3] }}</p></td>
               <td>
-                <button onclick="location.href='/edit/{{satuData[4]}}'">Edit</button>
-                <button>Hapus</button>
+                <button class="editBtn" onclick="location.href='/edit/{{satuData[4]}}'">Edit</button>
+                <button class="hapusBtn" >Hapus</button>
               </td>
             </tr>  
           {% endfor %}
@@ -60,7 +63,6 @@
 	  {% endif %}
     <!-- </form> -->
 
-    <button id="tambah-barang">Tambah Barang</button>
     <div id="popup-tambah">
       <form method="POST" enctype="multipart/form-data">
         <h2>PENJUALAN2</h2>

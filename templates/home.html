@@ -16,7 +16,7 @@
   <header>
     <a href="#" class="logo"><i class="fas fa-trash"></i>waste.</a>
     <nav class="navbar">
-      <a href="#keranjang">Produk</a>
+      <a class="active" href="#start">Produk</a>
       <a href="/toko" id="penjualan-show">Penjualan</a>
       <a href="#about">about</a>
     </nav>
@@ -28,11 +28,11 @@
     </div>
   </header>
   <!-- awal dari section -->
-  <section>
+  <section id="start">
     <div class="judul">PENAWARAN TERBAIK</div>
     <div class="barang-container">
       {% for satuData in semuaData %}
-      <div class="barang-card">
+      <button class="barang-card">
         <a href="#"><img src="{{ url_for('static', filename='image/suka.png') }}" alt="suka" style="max-width: 50%; height: 50%;"></a>
         <div class="kotak-gambar">
           <img src="data:image/png;base64,{{ satuData[0] }}" alt="barang"/>
@@ -43,7 +43,7 @@
           <p>Buy</p>
         </div>
         <p class="harga">{{satuData[2]}}</p>
-      </div>
+      </button>
       {% endfor %}
       
       <!-- <div class="barang-card">
