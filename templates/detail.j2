@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>home page</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="style4.css">
+  <link rel="stylesheet" href="/static/style4.css">
 </head>
 <body>
   <!-- awal dari header -->
@@ -58,7 +58,7 @@
     <div class="kotak">
       <a href="#" class="fas fa-heart"></a>
       <div class="gambar">
-        <img src="/asset/jam 2.png" alt="">
+        <img src="data:image/png;base64,{{ semuaData[0][0] }}" alt="barang"/>
       </div>
     </div>
     <div class="ulasan-pembeli">
@@ -66,7 +66,7 @@
     </div>
   </div>
   <div class="tengah">
-    <h2>Canon Camera Bekas</h2>
+    <h2>{{semuaData[0][1]}}</h2>
     <div class="bintang">
       <a href="#" class="fas fa-star"></a>
       <a href="#" class="fas fa-star"></a>
@@ -75,18 +75,19 @@
       <a href="#" class="fas fa-star-half-alt"></a>
     </div>
     <div class="harga">
-      <h2>Rp 100.000/Unit</h2>
+      <h2>{{semuaData[0][2]}}/Unit</h2>
     </div>
     <div class="deskripsi">
       <h3>Detail</h3>
-      <p>Kondisi: <span>Rusak</span></p>
+      <!-- <p>Kondisi: <span>Rusak</span></p>
       <p>Berat satuan: <span>300</span> kg</p>
       <p>Kategori: <span>Kamera Canon</span></p>
       <br><br>
       <p>Isi: 1 buah kamera canon rusak</p>
       <p>Packing: opp plastik</p>
       <br><br>
-      <p>Keterangan Barang: barang sudah tidak bisa digunakan lagi alias rusak, namun kemungkinan ada komponen yang masih bisa dimanfaatkan seperti lensa dan lainnya.</p>
+      <p>Keterangan Barang: barang sudah tidak bisa digunakan lagi alias rusak, namun kemungkinan ada komponen yang masih bisa dimanfaatkan seperti lensa dan lainnya.</p> -->
+      <p>{{semuaData[0][3]}}</p>
       <br><br>
       <h2 class="more">Lihat Lebih Banyak</h2>
       <h2 class="kirim">Pengiriman</h2>
@@ -105,8 +106,8 @@
       <div class="conten-detail">
         <h3>Detail Pesanan</h3>
         <div class="kotak-gambar"></div>
-        <img src="/asset/jam 2.png" alt="Gambar" class="jam">
-        <p class="deskripsi">Canon Camera Bekas</p>
+        <img src="data:image/png;base64,{{ semuaData[0][0] }}" alt="barang" class="jam"/>
+        <p class="deskripsi">{{semuaData[0][1]}}</p>
         <div class="clear"></div>
         <div class="wrapper">
           <span class="minus">-</span>
