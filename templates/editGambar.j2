@@ -25,7 +25,7 @@
           <!-- <input class="form-control" name="username" type="text" placeholder="username" aria-label="username" required> -->
   
           <label for="harga-input">Harga Barang:</label>
-          <input type="text" id="harga-input" name="harga"/>
+          <input type="text" id="harga-input" name="harga">
   
           <label for="deskripsi-input">Deskripsi Barang:</label>
           <textarea id="deskripsi-input" name="deskripsi"></textarea>
@@ -48,22 +48,6 @@
           reader.readAsDataURL(file);
         }
       });
-
-      
-  </script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
-  <script>
-    var rupiahInput = document.getElementById('harga-input');
-    rupiahInput.addEventListener('input', function(e) {
-      // Menghilangkan semua karakter kecuali angka
-      var input = e.target.value.replace(/\D/g, '');
-
-      // Format input menjadi format Rupiah
-      var formattedInput = 'Rp ' + numeral(input).format('0,0');
-
-      // Set nilai input dengan format Rupiah
-      rupiahInput.value = formattedInput;
-    });
   </script>
 </body>
 </html>
