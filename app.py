@@ -100,9 +100,27 @@ def home():
 
     return render_template('home.j2', semuaData=daftar, username=session['username'])
 
-# @app.route('/detail')
-# def home():
-#     username=session['username']
+@app.route('/suka/<string:id>')
+def suka(id):
+    username=session['username']
+    print(id)
+
+@app.route('/detail/<string:id>')
+def detail(id):
+    username=session['username']
+    daftar = []
+
+    row = Gambar.ambilSatuBarang(id)
+    gambar = base64.b64encode(row[0]).decode('ascii')
+    daftar.append((gambar, row[1], row[2], row[3], row[4]))
+    print(row)
+
+    # for row in rows:
+    #     gambar = base64.b64encode(row[0]).decode('ascii')
+    #     daftar.append((gambar, row[1], row[2], row[3], row[4]))
+
+    return render_template('detail.j2', semuaData=daftar, username=session['username'])
+    
 
 
 @app.route('/toko', methods=['GET', 'POST'])
