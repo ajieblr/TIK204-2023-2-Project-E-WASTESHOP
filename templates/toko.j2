@@ -11,10 +11,41 @@
 
 </head>
 <body>
+  <!-- <form action="toko/edit_barang" method="POST"></form> -->
+    {% if semuaData %}
+      <table>
+        <thead>
+          <tr>
+            <th class="judul-gambar">Gambar</th>
+            <th>Nama</th>
+            <th>Harga</th>
+            <th>Deskripsi</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for satuData in semuaData %}
+            <tr>
+              <td><img src="data:image/png;base64,{{ satuData[0] }}" /></td>
+              <td><p>{{ satuData[1] }}</p></td>
+              <td><p>{{ satuData[2] }}</p></td>
+              <td><p>{{ satuData[3] }}</p></td>
+              <td>
+                <button>Tambah</button>
+                <button class="tombol-edit">Edit</button>
+                <button onclick="location.href='/edit/{{satuData[4]}}'">Edit</button>
+              </td>
+            </tr>  
+          {% endfor %}
+        </tbody>
+      </table>
+	  {% endif %}
+    <!-- </form> -->
+
     <button id="tambah-barang">Tambah Barang</button>
-    <div id="popup">
-      <form method="POST">
-        <h2>PENJUALAN</h2>
+    <div id="popup-tambah">
+      <form method="POST" enctype="multipart/form-data">
+        <h2>PENJUALAN2</h2>
         <div id="form">
           <div id="gambar-form">
             <h3>Gambar Barang</h3>
@@ -24,7 +55,7 @@
           <div id="deskripsi-form">
             <h3>Deskripsi Barang</h3>
             <label for="nama-input">Nama Barang:</label>
-            <input type="text" id="nama-input" name="nama">
+            <input class="nama-input" type="text" id="nama-input" name="nama">
             <!-- <input class="form-control" name="username" type="text" placeholder="username" aria-label="username" required> -->
     
             <label for="harga-input">Harga Barang:</label>
@@ -37,10 +68,12 @@
         </div>
       </form>
     </div>
-  
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
     <script>
+      const editBtn = document.getElementById("tombol-edit");
       const tambahBarangBtn = document.getElementById("tambah-barang");
-      const popup = document.getElementById("popup");
+      const popup_edit = document.getElementById("popup-edit");
+      const popup_tambah = document.getElementById("popup-tambah");
       const gambarInput = document.getElementById("gambar-input");
       const gambarPreview = document.getElementById("gambar-preview");
       const namaInput = document.getElementById("nama-input");
@@ -49,8 +82,15 @@
       const submitButton = document.getElementById("submit-button");
 
       tambahBarangBtn.addEventListener("click", function() {
-        popup.style.display = "block";
+        popup_tambah.style.display = "block";
         body.style.background = "black"
+      });
+      
+      popup_tambah.addEventListener('click', function(event) {
+        if (event.target === this) {
+        // event berasal dari elemen induk (popup), bukan dari elemen di dalamnya
+        popup_tambah.style.display = 'none';
+      }
       });
 
       gambarInput.addEventListener("change", function() {
