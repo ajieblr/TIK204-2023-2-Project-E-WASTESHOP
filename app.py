@@ -100,6 +100,11 @@ def home():
 
     return render_template('home.j2', semuaData=daftar, username=session['username'])
 
+@app.route('/detail')
+def home():
+    username=session['username']
+
+
 @app.route('/toko', methods=['GET', 'POST'])
 def toko():
     if request.method == 'POST':

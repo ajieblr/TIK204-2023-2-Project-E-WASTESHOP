@@ -18,8 +18,6 @@
   transition: all .2s linear;
 }
 
-
-
 html{
     font-size: 62.5%;
     overflow-x: hidden;
@@ -144,6 +142,19 @@ header .icons #menu-bar{
   font-size: 5rem;
 }
  
+.kotak-gambar{
+  width: 150px;
+  height: 100px;
+  border: 1px solid black;
+  border-radius: 4px;
+}
+
+.kotak-gambar img{
+  width: 100%;
+  height: 100px;
+  object-fit: contain;
+  border-radius: 4px;
+}
 
   .judul {
     text-align: center;
