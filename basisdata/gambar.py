@@ -59,3 +59,13 @@ class Gambar:
 
         return rows
     
+    def hapusBarang(id):
+  
+        koneksi = sqlite3.connect("EWS.db")
+
+        sql = f"""DELETE FROM gambar
+                WHERE id=?;"""
+        koneksi.execute(sql, (id,))
+        koneksi.commit()
+
+        koneksi.close()

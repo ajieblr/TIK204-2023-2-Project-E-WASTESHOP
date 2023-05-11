@@ -59,22 +59,13 @@
                   <div class="konten-popup">
                     <h3 class="judul-popup">Apakah anda yakin?</h3>
                     <div class="tombol-popup">
-                      <button class="tombol-1">Yakin</button>
+                      <button class="tombol-1" onclick="location.href='/hapus/{{satuData[4]}}'">Yakin</button>
                       <button onclick="closePopup()" class="tombol-2">Cancel</button>
                     </div>
                   </div>
                 </div>
               </td>
             </tr> 
-            <div id="popup" class="popup">
-              <div class="konten-popup">
-                <h3 class="judul-popup">Apakah anda yakin?</h3>
-                <div class="tombol-popup">
-                  <button class="tombol-1">Yakin</button>
-                  <button onclick="closePopup()" class="tombol-2">Cancel</button>
-                </div>
-              </div>
-            </div> 
           {% endfor %}
         </tbody>
       </table>
