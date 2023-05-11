@@ -223,3 +223,43 @@ h3{
 	font-size: 1em;
 }
 
+.popup{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 1004;
+    background: rgba(0, 0, 0, .8);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 0 1rem;
+	z-index: 1;
+    /* border-radius: 10px; */
+}
+
+
+.popup .konten-popup{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 30%; height: 40%;
+    background: white;
+    border-radius: 10px;
+}
+
+.popup .judul-popup{
+    font-size: 4rem;
+}
+
+.popup .tombol-1,
+.popup .tombol-2{
+    margin-right: 2rem;
+    font-size: 2rem;
+    height: 3rem;
+    width: 10rem;
+    border-radius: 5px;
+    /* width: 30px; */
+}
