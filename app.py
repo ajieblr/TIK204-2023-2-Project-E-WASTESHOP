@@ -1,5 +1,9 @@
-from flask import Flask,redirect, url_for, render_template, request, session
+from flask import Flask,redirect, url_for, render_template, request, session, send_file, make_response
 from functools import wraps
+import os
+from io import BytesIO
+import base64
+from PIL import Image
 
 import sqlite3
 from basisdata import *
@@ -9,6 +13,8 @@ app = Flask(__name__,
 	          static_folder='static')
 
 app.secret_key = 'secret_key'
+app.config['UPLOAD_FOLDER'] = 'static'
+
 
 @app.route('/', methods=['GET', 'POST'])
 def login():
@@ -58,6 +64,7 @@ def signup():
             return render_template('signup.j2', error=error)
 
         # Tambahkan user baru ke database
+        session['username'] = username
         User.tambahUser(username, email, password)
 
         # Redirect ke halaman login
@@ -83,14 +90,66 @@ def login_required(f):
 
 @app.route('/home')
 def home():
-    return render_template('home.j2', username=session['username'])
-    print('Selamat datang di halaman home') 
+    username=session['username']
+    rows = Gambar.ambilBarangTokoOrang(username)
+
+    daftar = []
+    for row in rows:
+        gambar = base64.b64encode(row[0]).decode('ascii')
+        daftar.append((gambar, row[1], row[2], row[3], row[4]))
+
+    return render_template('home.j2', semuaData=daftar, username=session['username'])
 
 @app.route('/toko', methods=['GET', 'POST'])
 def toko():
     if request.method == 'POST':
-        pass
-    return render_template('toko.j2', username=session['username'])
+        username=session['username']
+        nama = request.form['nama']
+        filename = request.files['gambar'].read()
+        harga = request.form['harga']
+        deskripsi = request.form['deskripsi']
+
+        Gambar.tambahGambar(username, filename, nama, harga, deskripsi)
+
+        rows = Gambar.ambilBarangSatuToko(username)
+
+        daftar = []
+        for row in rows:
+            gambar = base64.b64encode(row[0]).decode('ascii')
+            daftar.append((gambar, row[1], row[2], row[3], row[4]))
+
+        return render_template('toko.j2', semuaData=daftar, username=session['username'])
+    
+    username=session['username']
+    rows = Gambar.ambilBarangSatuToko(username)
+
+    daftar = []
+    for row in rows:
+        gambar = base64.b64encode(row[0]).decode('ascii')
+        daftar.append((gambar, row[1], row[2], row[3], row[4]))
+    return render_template('toko.j2', semuaData=daftar, username=session['username'])
+
+@app.route("/edit/<string:id>", methods=['GET', 'POST'])
+def edit(id):
+    if request.method == 'POST':
+        username=session['username']
+        nama = request.form['nama']
+        filename = request.files['gambar'].read()
+        harga = request.form['harga']
+        deskripsi = request.form['deskripsi']
+
+        Gambar.ubahBarang(id, filename, nama, harga, deskripsi)
+
+        rows = Gambar.ambilBarangSatuToko(username)
+
+        daftar = []
+        for row in rows:
+            gambar = base64.b64encode(row[0]).decode('ascii')
+            daftar.append((gambar, row[1], row[2], row[3], row[4]))
+
+        return redirect(url_for('toko'))
+    print(id)
+    return render_template('editGambar.j2', username=session['username'])
 
 @app.route('/forgot_password', methods=['GET', 'POST'])
 def forgotPass():
