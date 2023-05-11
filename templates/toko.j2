@@ -16,7 +16,7 @@
 
 </head>
 <body>
-  <header id="header">
+  <header>
     <a href="#" class="logo"><i class="fas fa-trash"></i>waste.</a>
     <nav class="navbar">
       <a href="/home">Produk</a>
@@ -48,15 +48,33 @@
         <tbody>
           {% for satuData in semuaData %}
             <tr>
-              <td><img src="data:image/png;base64,{{ satuData[0] }}" /></td>
+              <td><img src="data:image/png;base64,{{ satuData[0] }}" alt=""/></td>
               <td><p>{{ satuData[1] }}</p></td>
               <td><p>{{ satuData[2] }}</p></td>
               <td><p>{{ satuData[3] }}</p></td>
               <td>
                 <button class="editBtn" onclick="location.href='/edit/{{satuData[4]}}'">Edit</button>
                 <button class="hapusBtn" >Hapus</button>
+                <div id="popup" class="popup">
+                  <div class="konten-popup">
+                    <h3 class="judul-popup">Apakah anda yakin?</h3>
+                    <div class="tombol-popup">
+                      <button class="tombol-1">Yakin</button>
+                      <button onclick="closePopup()" class="tombol-2">Cancel</button>
+                    </div>
+                  </div>
+                </div>
               </td>
-            </tr>  
+            </tr> 
+            <div id="popup" class="popup">
+              <div class="konten-popup">
+                <h3 class="judul-popup">Apakah anda yakin?</h3>
+                <div class="tombol-popup">
+                  <button class="tombol-1">Yakin</button>
+                  <button onclick="closePopup()" class="tombol-2">Cancel</button>
+                </div>
+              </div>
+            </div> 
           {% endfor %}
         </tbody>
       </table>
@@ -79,9 +97,7 @@
             <!-- <input class="form-control" name="username" type="text" placeholder="username" aria-label="username" required> -->
     
             <label for="harga-input">Harga Barang:</label>
-            <!-- <input type="text" id="harga-input" name="harga"> -->
-            <input type="text" id="harga-input" name="harga"/>
-            <!-- <input type="number" id="harga-input" name="harga" step="1000" min="0" value="0" oninput="formatNumber(this)"> -->
+            <input type="text" id="harga-input" name="harga">
     
             <label for="deskripsi-input">Deskripsi Barang:</label>
             <textarea id="deskripsi-input" name="deskripsi"></textarea>
@@ -91,23 +107,10 @@
       </form>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
-  <script>
-    var rupiahInput = document.getElementById('harga-input');
-    rupiahInput.addEventListener('input', function(e) {
-      // Menghilangkan semua karakter kecuali angka
-      var input = e.target.value.replace(/\D/g, '');
-
-      // Format input menjadi format Rupiah
-      var formattedInput = 'Rp ' + numeral(input).format('0,0');
-
-      // Set nilai input dengan format Rupiah
-      rupiahInput.value = formattedInput;
-    });
-  </script>
-
     <script>
-      const header = document.getElementById("header");
+      var buttons = document.querySelectorAll('.hapusBtn');
+      var popups = document.querySelectorAll('.popup');
+      var closeButtons = document.querySelectorAll('.tombol-2');
       const editBtn = document.getElementById("tombol-edit");
       const tambahBarangBtn = document.getElementById("tambah-barang");
       const popup_edit = document.getElementById("popup-edit");
@@ -118,6 +121,27 @@
       const hargaInput = document.getElementById("harga-input");
       const deskripsiInput = document.getElementById("deskripsi-input");
       const submitButton = document.getElementById("submit-button");
+
+
+      for (var i = 0; i < buttons.length; i++) {
+        buttons[i].addEventListener('click', function(event) {
+          event.target.nextElementSibling.style.display = 'flex';
+        });
+      }
+
+      for (var i = 0; i < closeButtons.length; i++) {
+        closeButtons[i].addEventListener('click', function(event) {
+          event.target.parentElement.parentElement.parentElement.style.display = 'none';
+        });
+      }
+
+      window.addEventListener('click', function(event) {
+        for (var i = 0; i < popups.length; i++) {
+          if (event.target == popups[i]) {
+            popups[i].style.display = 'none';
+          }
+        }
+      });
 
       tambahBarangBtn.addEventListener("click", function() {
         popup_tambah.style.display = "block";
@@ -141,14 +165,6 @@
           reader.readAsDataURL(file);
         }
       });
-
-      function formatNumber(input) {
-        var value = input.value;
-        value = value.replace(/\D/g, ""); // hanya mengambil angka
-        value = value.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1."); // menambahkan titik sebagai pemisah ribuan
-        value = "Rp " + value; // menambahkan "Rp " di depan angka
-        input.value = value; // menampilkan kembali nilai yang sudah diformat
-      }
 
       
     </script>  
