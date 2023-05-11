@@ -22,7 +22,7 @@ class Gambar:
     def ubahBarang(id, gambar, nama, harga, deskripsi):
         koneksi = sqlite3.connect("EWS.db")
 
-        sql = f"""UPDATE toko
+        sql = f"""UPDATE gambar
               SET gambar=?,
                   nama=?,
                   harga=?,

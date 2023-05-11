@@ -9,34 +9,34 @@
     <title>E-Waste Shop</title>
 </head>
 <body>
-    <div class="popup-edit">
-        <form method="POST" enctype="multipart/form-data">
-          <h2>EDIT BARANG</h2>
-          <div class="form">
-            <div class="gambar-form">
-              <h3>Gambar Barang</h3>
-              <input type="file" class="gambar-input" name="gambar">
-              <div class="gambar-preview1"><img class="gambar-preview2" name="gambar"></div>
-            </div>
-            <div class="deskripsi-form">
-              <h3>Deskripsi Barang</h3>
-              <label for="nama-input">Nama Barang:</label>
-              <input class="nama-input" type="text" id="nama-input" name="nama">
-              <!-- <input class="form-control" name="username" type="text" placeholder="username" aria-label="username" required> -->
-      
-              <label for="harga-input">Harga Barang:</label>
-              <input type="text" class="harga-input" name="harga">
-      
-              <label for="deskripsi-input">Deskripsi Barang:</label>
-              <textarea class="deskripsi-input" name="deskripsi"></textarea>
-              <button class="submit-button" type="submit">Submit</button>
-            </div>
-          </div>
-        </form>
+  <div id="popup-tambah">
+    <form method="POST" enctype="multipart/form-data">
+      <h2>PENJUALAN2</h2>
+      <div id="form">
+        <div id="gambar-form">
+          <h3>Gambar Barang</h3>
+          <input type="file" id="gambar-input" name="gambar">
+          <div class="gambar-preview"><img id="gambar-preview" name="gambar"></div>
+        </div>
+        <div id="deskripsi-form">
+          <h3>Deskripsi Barang</h3>
+          <label for="nama-input">Nama Barang:</label>
+          <input class="nama-input" type="text" id="nama-input" name="nama">
+          <!-- <input class="form-control" name="username" type="text" placeholder="username" aria-label="username" required> -->
+  
+          <label for="harga-input">Harga Barang:</label>
+          <input type="text" id="harga-input" name="harga">
+  
+          <label for="deskripsi-input">Deskripsi Barang:</label>
+          <textarea id="deskripsi-input" name="deskripsi"></textarea>
+          <button id="submit-button" type="submit">Submit</button>
+        </div>
       </div>
-      <script>
-        const gambarInput = document.getElementsByClassName(".gambar-input");
-        const gambarPreview = document.getElementsByClassName(".gambar-preview");
+    </form>
+  </div>
+  <script>
+        const gambarInput = document.getElementById("gambar-input");
+        const gambarPreview = document.getElementById("gambar-preview");
 
         gambarInput.addEventListener("change", function() {
         const file = this.files[0];
@@ -48,6 +48,6 @@
           reader.readAsDataURL(file);
         }
       });
-      </script>
+  </script>
 </body>
 </html>
