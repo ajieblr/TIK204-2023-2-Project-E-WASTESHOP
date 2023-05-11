@@ -147,7 +147,7 @@ def edit(id):
             gambar = base64.b64encode(row[0]).decode('ascii')
             daftar.append((gambar, row[1], row[2], row[3], row[4]))
 
-        return render_template('toko.j2', semuaData=daftar, username=session['username'])
+        return redirect(url_for('toko'))
     print(id)
     return render_template('editGambar.j2', username=session['username'])
 
