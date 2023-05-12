@@ -1,11 +1,9 @@
+<<<<<<< Updated upstream
 {
   "extends": [
     "development"
   ],
   "hints": {
-<<<<<<< HEAD
-    "meta-viewport": "off"
-=======
     "meta-viewport": "off",
     "compat-api/css": [
       "default",
@@ -22,6 +20,29 @@
         "label": "off"
       }
     ]
->>>>>>> main
   }
+=======
+{
+  "extends": [
+    "development"
+  ],
+  "hints": {
+    "meta-viewport": "off",
+    "compat-api/css": [
+      "default",
+      {
+        "ignore": [
+          "scroll-behavior",
+          "user-select"
+        ]
+      }
+    ],
+    "axe/forms": [
+      "default",
+      {
+        "label": "off"
+      }
+    ]
+  }
+>>>>>>> Stashed changes
 }
