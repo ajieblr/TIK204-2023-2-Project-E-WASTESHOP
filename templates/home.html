@@ -7,19 +7,37 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <title>E-Waste Shop</title>
     <link rel="shortcut icon" type="image" href="/gambar/IMG_0978.PNG">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="static/styleMenu.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap">
     <link rel="stylesheet" href="C:\Users\Asus\Downloads\New folder\magnifying-glass-solid.svg">
 </head>
 <body>
   <header>
-    <a href="#" class="logo"><i class="fas fa-trash"></i>waste.</a>
-    <nav class="navbar">
-      <a class="active" href="#start">Produk</a>
-      <a href="/toko" id="penjualan-show">Penjualan</a>
-      <a href="#about">about</a>
+    <nav>
+      <div class="nav-left">
+        <a href="#">E-WASTE</a>
+      </div>
+      <div class="nav-center">
+        <ul>
+          <li><a href="#" class="active">Produk</a></li>
+          <li><a href="#">Penjualan</a></li>
+          <li><a href="#">About</a></li>
+        </ul>
+      </div>
+      <div class="nav-right">
+        <a href="#"><img src="{{ url_for('static', filename='image/cari.png') }}" alt="cari" style="max-width: 50%; height: 50%;"></a>
+        <a href="#"><img src="{{ url_for('static', filename='image/keranjang.png') }}" alt="keranjang" style="max-width: 50%; height: 50%;"></i></a>
+        <a href="#"><img src="{{ url_for('static', filename='image/suka.png') }}" alt="suka" style="max-width: 50%; height: 50%;"></a>
+      </div>
     </nav>
+<<<<<<< HEAD
+    <div class="judul">PENAWARAN TERBAIK</div>
+    <div class="barang-container">
+      <div class="barang-card">
+        <a href="#"><img src="{{ url_for('static', filename='image/suka.png') }}" alt="suka" style="max-width: 50%; height: 50%;"></a>
+        <img src="{{ url_for('static', filename='image/barang.png') }}" alt="barang" style="max-width: 50%; height: 50%;">
+        <h4>Nama Barang 1</h4>
+=======
     <div class="icons">
       <i class="fas fa-bars" id="menu-bars"></i>
       <i class="fas fa-search" id="search-icon"></i>
@@ -38,14 +56,75 @@
           <img src="data:image/png;base64,{{ satuData[0] }}" alt="barang"/>
         </div>
         <h4>{{satuData[1]}}</h4>
+>>>>>>> main
         <div class="rating">4.5/5</div>
         <div class="buy-box">
           <p>Buy</p>
         </div>
+<<<<<<< HEAD
+        <p class="harga">Rp 100.000</p>
+      </div>
+      
+      <div class="barang-card">
+        <a href="#"><img src="{{ url_for('static', filename='image/suka.png') }}" alt="suka" style="max-width: 50%; height: 50%;"></a>
+        <img src="{{ url_for('static', filename='image/barang.png') }}" alt="barang" style="max-width: 50%; height: 50%;">
+        <h4>Nama Barang 2</h4>
+        <div class="rating">4.5/5</div>
+        <div class="buy-box">
+          <p>Buy</p>
+        </div>
+        <p class="harga">Rp 200.000</p>
+      </div>
+      
+      <div class="barang-card">
+        <a href="#"><img src="{{ url_for('static', filename='image/suka.png') }}" alt="suka" style="max-width: 50%; height: 50%;"></a>
+        <img src="{{ url_for('static', filename='image/barang.png') }}" alt="barang" style="max-width: 50%; height: 50%;">
+        <h4>Nama Barang 3</h4>
+        <div class="rating">4.5/5</div>
+        <div class="buy-box">
+          <p>Buy</p>
+        </div>
+        <p class="harga">Rp 300.000</p>
+      </div>
+      
+      <div class="barang-card">
+        <a href="#"><img src="{{ url_for('static', filename='image/suka.png') }}" alt="suka" style="max-width: 50%; height: 50%;"></a>
+        <img src="{{ url_for('static', filename='image/barang.png') }}" alt="barang" style="max-width: 50%; height: 50%;">
+        <h4>Nama Barang 1</h4>
+        <div class="rating">4.5/5</div>
+        <div class="buy-box">
+          <p>Buy</p>
+        </div>
+        <p class="harga">Rp 100.000</p>
+      </div>
+      
+      <div class="barang-card">
+        <a href="#"><img src="{{ url_for('static', filename='image/suka.png') }}" alt="suka" style="max-width: 50%; height: 50%;"></a>
+        <img src="{{ url_for('static', filename='image/barang.png') }}" alt="barang" style="max-width: 50%; height: 50%;">
+        <h4>Nama Barang 2</h4>
+        <div class="rating">4.5/5</div>
+        <div class="buy-box">
+          <p>Buy</p>
+        </div>
+        <p class="harga">Rp 200.000</p>
+      </div>
+      
+      <div class="barang-card">
+        <a href="#"><img src="{{ url_for('static', filename='image/suka.png') }}" alt="suka" style="max-width: 50%; height: 50%;"></a>
+        <img src="{{ url_for('static', filename='image/barang.png') }}" alt="barang" style="max-width: 50%; height: 50%;">
+        <h4>Nama Barang 3</h4>
+        <div class="rating">4.5/5</div>
+        <div class="buy-box">
+          <p>Buy</p>
+        </div>
+        <p class="harga">Rp 300.000</p>
+      </div>
+=======
         <p class="harga">{{satuData[2]}}</p>
       </button>
       {% endfor %}
 
+>>>>>>> main
     </div>
 
     <div class="load">
@@ -66,9 +145,8 @@
           <p>Merupakan sebuah layanan yang kami siapkan untuk memenuhi kebutuhan masyarakat dalam pemanfaatan sampah elektronik bekas. Problematika yang akan diselesaikan oleh layanan ini adalah membantu masyarakat dalam menjual sampah elektronik yang sudah tidak terpakai dengan harga yang lebih layak.</p>
         </div>
       </div>
-    </div>
-  </section>
-  <!-- akhir dari section -->
+    </div>  
+  </header>
   <footer>
     <div class="info">
       <div class="satu-info">
