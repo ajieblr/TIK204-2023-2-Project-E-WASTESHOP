@@ -30,16 +30,38 @@
         <a href="#"><img src="{{ url_for('static', filename='image/suka.png') }}" alt="suka" style="max-width: 50%; height: 50%;"></a>
       </div>
     </nav>
+<<<<<<< HEAD
     <div class="judul">PENAWARAN TERBAIK</div>
     <div class="barang-container">
       <div class="barang-card">
         <a href="#"><img src="{{ url_for('static', filename='image/suka.png') }}" alt="suka" style="max-width: 50%; height: 50%;"></a>
         <img src="{{ url_for('static', filename='image/barang.png') }}" alt="barang" style="max-width: 50%; height: 50%;">
         <h4>Nama Barang 1</h4>
+=======
+    <div class="icons">
+      <i class="fas fa-bars" id="menu-bars"></i>
+      <i class="fas fa-search" id="search-icon"></i>
+      <a onclick="location.href='/logout'" class="fas fa-heart"></a>
+      <a href="#" class="fas fa-shopping-cart"></a>
+    </div>
+  </header>
+  <!-- awal dari section -->
+  <section id="start">
+    <div class="judul">PENAWARAN TERBAIK</div>
+    <div class="barang-container">
+      {% for satuData in semuaData %}
+      <button class="barang-card" onclick="location.href='/detail/{{satuData[4]}}'">
+        <a href="/suka/{{satuData[4]}}"><img src="{{ url_for('static', filename='image/suka.png') }}" alt="suka" style="max-width: 50%; height: 50%;"></a>
+        <div class="kotak-gambar">
+          <img src="data:image/png;base64,{{ satuData[0] }}" alt="barang"/>
+        </div>
+        <h4>{{satuData[1]}}</h4>
+>>>>>>> main
         <div class="rating">4.5/5</div>
         <div class="buy-box">
           <p>Buy</p>
         </div>
+<<<<<<< HEAD
         <p class="harga">Rp 100.000</p>
       </div>
       
@@ -97,6 +119,12 @@
         </div>
         <p class="harga">Rp 300.000</p>
       </div>
+=======
+        <p class="harga">{{satuData[2]}}</p>
+      </button>
+      {% endfor %}
+
+>>>>>>> main
     </div>
 
     <div class="load">

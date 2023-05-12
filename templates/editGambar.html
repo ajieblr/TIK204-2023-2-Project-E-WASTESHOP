@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/static/styleEdit.css">
+    <title>E-Waste Shop</title>
+</head>
+<body>
+  <div id="popup-tambah">
+    <form method="POST" enctype="multipart/form-data">
+      <h2>PENJUALAN2</h2>
+      <div id="form">
+        <div id="gambar-form">
+          <h3>Gambar Barang</h3>
+          <input type="file" id="gambar-input" name="gambar">
+          <div class="gambar-preview"><img id="gambar-preview" name="gambar"></div>
+        </div>
+        <div id="deskripsi-form">
+          <h3>Deskripsi Barang</h3>
+          <label for="nama-input">Nama Barang:</label>
+          <input class="nama-input" type="text" id="nama-input" name="nama">
+          <!-- <input class="form-control" name="username" type="text" placeholder="username" aria-label="username" required> -->
+  
+          <label for="harga-input">Harga Barang:</label>
+          <input type="text" id="harga-input" name="harga"/>
+  
+          <label for="deskripsi-input">Deskripsi Barang:</label>
+          <textarea id="deskripsi-input" name="deskripsi"></textarea>
+          <button id="submit-button" type="submit">Submit</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <script>
+        const gambarInput = document.getElementById("gambar-input");
+        const gambarPreview = document.getElementById("gambar-preview");
+
+        gambarInput.addEventListener("change", function() {
+        const file = this.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.addEventListener("load", function() {
+            gambarPreview.setAttribute("src", this.result);
+          });
+          reader.readAsDataURL(file);
+        }
+      });
+
+      
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
+  <script>
+    var rupiahInput = document.getElementById('harga-input');
+    rupiahInput.addEventListener('input', function(e) {
+      // Menghilangkan semua karakter kecuali angka
+      var input = e.target.value.replace(/\D/g, '');
+
+      // Format input menjadi format Rupiah
+      var formattedInput = 'Rp ' + numeral(input).format('0,0');
+
+      // Set nilai input dengan format Rupiah
+      rupiahInput.value = formattedInput;
+    });
+  </script>
+</body>
+</html>

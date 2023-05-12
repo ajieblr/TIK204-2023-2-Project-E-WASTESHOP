@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>home page</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="/static/style4.css">
+</head>
+<body>
+  <!-- awal dari header -->
+<header>
+  <a href="#" class="logo"><i class="fas fa-trash"></i>waste.</a>
+  <nav class="navbar">
+    <a href="#keranjang">Produk</a>
+    <a href="#order" id="penjualan-show">Penjualan</a>
+    <a href="#about">about</a>
+  </nav>
+  <div class="icons">
+    <i class="fas fa-bars" id="menu-bars"></i>
+    <i class="fas fa-search" id="search-icon"></i>
+    <a href="#" class="fas fa-heart"></a>
+    <a href="#" class="fas fa-shopping-cart"></a>
+  </div>
+</header>
+<!-- akhir dari header -->
+<!-- search bar start -->
+<form action="" id="search-form">
+  <input type="search" placeholder="Type Here" name="" id="search-box">
+  <label for="search-box" class="fas fa-search"></label>
+  <i class="fas fa-times" id="close"></i>
+</form>
+<!-- search bar end -->
+<!-- penjualan popup start -->
+
+  <div id="modal-penjualan">
+    <div class="modal">
+      <div class="top-form">
+        <div class="close-modal">
+          &#10006;
+        </div>
+      </div>
+      <div class="penjualan-form">
+        <h2>Masukkan Data Barang</h2>
+        <form action="">
+          <input type="text" class="form-control" placeholder="Nama Barang">
+          <input type="text" class="form-control" placeholder="Deskripsi Barang">
+          <input type="text" class="form-control" placeholder="Jumlah Barang">
+          <input type="text" class="form-control" placeholder="Harga Barang">
+          <button type="button" class="btn">Update</button>
+        </form>
+      </div>
+    </div>
+  </div>
+<section class="detail-barang">
+  <div class="kiri">
+    <div class="kotak">
+      <a href="#" class="fas fa-heart"></a>
+      <div class="gambar">
+        <img src="data:image/png;base64,{{ semuaData[0][0] }}" alt="barang"/>
+      </div>
+    </div>
+    <div class="ulasan-pembeli">
+      <h3>Ulasan Pembeli</h3>
+    </div>
+  </div>
+  <div class="tengah">
+    <h2>{{semuaData[0][1]}}</h2>
+    <div class="bintang">
+      <a href="#" class="fas fa-star"></a>
+      <a href="#" class="fas fa-star"></a>
+      <a href="#" class="fas fa-star"></a>
+      <a href="#" class="fas fa-star"></a>
+      <a href="#" class="fas fa-star-half-alt"></a>
+    </div>
+    <div class="harga">
+      <h2>{{semuaData[0][2]}}/Unit</h2>
+    </div>
+    <div class="deskripsi">
+      <h3>Detail</h3>
+      <!-- <p>Kondisi: <span>Rusak</span></p>
+      <p>Berat satuan: <span>300</span> kg</p>
+      <p>Kategori: <span>Kamera Canon</span></p>
+      <br><br>
+      <p>Isi: 1 buah kamera canon rusak</p>
+      <p>Packing: opp plastik</p>
+      <br><br>
+      <p>Keterangan Barang: barang sudah tidak bisa digunakan lagi alias rusak, namun kemungkinan ada komponen yang masih bisa dimanfaatkan seperti lensa dan lainnya.</p> -->
+      <p>{{semuaData[0][3]}}</p>
+      <br><br>
+      <h2 class="more">Lihat Lebih Banyak</h2>
+      <h2 class="kirim">Pengiriman</h2>
+    </div>
+    <div class="icon-container">
+      <i class="fas fa-location"></i>
+      <p>Dikirim dari Elektronik Wasted Center</p>
+    </div>
+    <div class="icon-container">
+      <i class="fas fa-truck"></i>
+      <p>Pengiriman reguler oleh Kurir <span>(Estimasi tiba 24 jam)</span></p>
+    </div>
+  </div>
+  <div class="kanan">
+    <div class="detail-pesanan">
+      <div class="conten-detail">
+        <h3>Detail Pesanan</h3>
+        <div class="kotak-gambar"></div>
+        <img src="data:image/png;base64,{{ semuaData[0][0] }}" alt="barang" class="jam"/>
+        <p class="deskripsi">{{semuaData[0][1]}}</p>
+        <div class="clear"></div>
+        <div class="wrapper">
+          <span class="minus">-</span>
+          <span class="num">1</span>
+          <span class="plus">+</span>
+          <p>Stok: <span class="jml">4</span></p>
+        </div>
+        <div class="harga">
+          <p class="harga-1">Subtotal</p>
+          <p class="harga-2">Rp100,000</p>
+        </div>
+        <button class="centered-button-1"><span>+</span>Keranjang</button>
+        <button class="centered-button-2">Beli</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<script src="/static/script_2.js"></script>
+</body>
+</html>

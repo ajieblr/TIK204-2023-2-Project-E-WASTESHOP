@@ -3,6 +3,25 @@
     "development"
   ],
   "hints": {
+<<<<<<< HEAD
     "meta-viewport": "off"
+=======
+    "meta-viewport": "off",
+    "compat-api/css": [
+      "default",
+      {
+        "ignore": [
+          "scroll-behavior",
+          "user-select"
+        ]
+      }
+    ],
+    "axe/forms": [
+      "default",
+      {
+        "label": "off"
+      }
+    ]
+>>>>>>> main
   }
 }
