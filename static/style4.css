@@ -301,7 +301,7 @@ header .icons #menu-bar{
 .detail-barang .kiri .kotak{
     height: 40rem;
     background: #D9D9D9;
-    width: 35rem;
+    width: 100%;
     margin: 30px 0;
     border-radius: 10px;
     /* border: #0F6292 1px solid; */
@@ -332,6 +332,7 @@ header .icons #menu-bar{
 
 
 .detail-barang .tengah{
+    padding-left: 20px;
     flex-basis: 40%;
 }
 
