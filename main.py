@@ -1,3 +1,5 @@
 from basisdata import *
 
-print(User.cekPassword('2104111010057'))
+a = Gambar.ambilBarangSatuToko('2104111010010')
+
+print(a[1])
