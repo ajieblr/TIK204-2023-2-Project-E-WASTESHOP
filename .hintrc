@@ -3,6 +3,9 @@
     "development"
   ],
   "hints": {
+<<<<<<< HEAD
+    "meta-viewport": "off"
+=======
     "meta-viewport": "off",
     "compat-api/css": [
       "default",
@@ -19,5 +22,6 @@
         "label": "off"
       }
     ]
+>>>>>>> main
   }
 }
