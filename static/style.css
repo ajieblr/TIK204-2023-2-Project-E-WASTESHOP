@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
 body{
@@ -55,4 +56,63 @@ a{
 .error {
 	text-align: center;
 	color: red;
+=======
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+body{
+	background-color: #0F6292;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-family: 'Montserrat', sans-serif;
+}
+
+.container {
+	position: absolute;
+	background-color: white;
+	padding-top: 70px;
+	padding-bottom: 70px;
+	width: 608px;
+	box-shadow: 0px 9px 15px;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	border-radius: 12px;
+}
+
+h2{
+	text-align: center;
+	margin-bottom: 20px;
+	font-size: 22px;
+    font-weight:bolder;
+}
+
+.form-control {
+	margin: 10px auto;
+	width: 269px;
+}
+
+.btn{
+	width: 269px;
+	margin: 0 auto;
+	background-color: #0F6292;
+}
+
+.btn:hover {
+	background-color: #1E3050;
+}
+
+p{
+	text-align: center;
+    font-size: 12px;
+}
+
+a{
+	text-decoration: none;
+}
+
+.error {
+	text-align: center;
+	color: red;
+>>>>>>> Stashed changes
 }
