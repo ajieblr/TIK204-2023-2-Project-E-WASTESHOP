@@ -1,5 +1,9 @@
-from flask import Flask,redirect, url_for, render_template, request, session
+from flask import Flask,redirect, url_for, render_template, request, session, send_file, make_response
 from functools import wraps
+import os
+from io import BytesIO
+import base64
+from PIL import Image
 
 import sqlite3
 from basisdata import *
@@ -9,6 +13,8 @@ app = Flask(__name__,
 	          static_folder='static')
 
 app.secret_key = 'secret_key'
+app.config['UPLOAD_FOLDER'] = 'static'
+
 
 @app.route('/', methods=['GET', 'POST'])
 def login():
@@ -58,6 +64,7 @@ def signup():
             return render_template('signup.j2', error=error)
 
         # Tambahkan user baru ke database
+        session['username'] = username
         User.tambahUser(username, email, password)
 
         # Redirect ke halaman login
@@ -83,16 +90,6 @@ def login_required(f):
 
 @app.route('/home')
 def home():
-<<<<<<< HEAD
-    return render_template('home.j2', username=session['username'])
-    print('Selamat datang di halaman home') 
-
-@app.route('/toko', methods=['GET', 'POST'])
-def toko():
-    if request.method == 'POST':
-        pass
-    return render_template('toko.j2', username=session['username'])
-=======
     try:
         username=session['username']
         rows = Gambar.ambilBarangTokoOrang(username)
@@ -196,7 +193,6 @@ def hapus(id):
     except:
         return redirect(url_for('login'))
 
->>>>>>> main
 
 @app.route('/forgot_password', methods=['GET', 'POST'])
 def forgotPass():

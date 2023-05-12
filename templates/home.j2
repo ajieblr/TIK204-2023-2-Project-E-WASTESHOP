@@ -16,7 +16,7 @@
   <header>
     <a href="#" class="logo"><i class="fas fa-trash"></i>waste.</a>
     <nav class="navbar">
-      <a href="#keranjang">Produk</a>
+      <a class="active" href="#start">Produk</a>
       <a href="/toko" id="penjualan-show">Penjualan</a>
       <a href="#about">about</a>
     </nav>
@@ -28,17 +28,12 @@
     </div>
   </header>
   <!-- awal dari section -->
-  <section>
+  <section id="start">
     <div class="judul">PENAWARAN TERBAIK</div>
     <div class="barang-container">
       {% for satuData in semuaData %}
-<<<<<<< HEAD
-      <div class="barang-card">
-        <a href="#"><img src="{{ url_for('static', filename='image/suka.png') }}" alt="suka" style="max-width: 50%; height: 50%;"></a>
-=======
       <button class="barang-card" onclick="location.href='/detail/{{satuData[4]}}'">
         <a href="/suka/{{satuData[4]}}"><img src="{{ url_for('static', filename='image/suka.png') }}" alt="suka" style="max-width: 50%; height: 50%;"></a>
->>>>>>> main
         <div class="kotak-gambar">
           <img src="data:image/png;base64,{{ satuData[0] }}" alt="barang"/>
         </div>
@@ -48,7 +43,7 @@
           <p>Buy</p>
         </div>
         <p class="harga">{{satuData[2]}}</p>
-      </div>
+      </button>
       {% endfor %}
 
     </div>
@@ -77,15 +72,6 @@
   <footer>
     <div class="info">
       <div class="satu-info">
-        <div class="judul">Quick Links</div>
-        <ul>
-          <p>Login</p>
-          <p>Produk</p>
-          <p>Penjualan</p>
-          <p>About</p>
-        </ul>
-      </div>
-      <div class="satu-info">
         <div class="judul">Location</div>
         <ul>
           <p>Indonesia</p>
@@ -95,19 +81,27 @@
         </ul>
       </div>
       <div class="satu-info">
-        <div class="judul">Follow Us</div>
+        <div class="judul">Quick Links</div>
         <ul>
-          <p>Instagram</p>
-          <p>Facebook</p>
-          <p>Twitter</p>
+          <p>Login</p>
+          <p>Produk</p>
+          <p>Penjualan</p>
+          <p>About</p>
         </ul>
       </div>
       <div class="satu-info">
         <div class="judul">Contact Info</div>
         <ul>
-          <p>Kopelma Darussalam Syiah Kuala Jalan Teungku Syech Abdur Rauf, Kota Pelajar Mahasiswa No.7, Kopelma Darussalam, Kec. Syiah Kuala, Kota Banda Aceh, Aceh 24415</p>
           <p>+62-823-4483-4344</p>
-          <p>Kelompok2RPL@usk.ac.id</p>
+          <p>defan@gmail.com</p>
+        </ul>
+      </div>
+      <div class="satu-info">
+        <div class="judul">Follow Us</div>
+        <ul>
+          <p>Instagram</p>
+          <p>Facebook</p>
+          <p>Twitter</p>
         </ul>
       </div>
     </div>
