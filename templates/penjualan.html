@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <title>E-Waste Shop</title>
+    <link rel="shortcut icon" type="image" href="/gambar/IMG_0978.PNG">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="static/stylePenjualan.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap">
+    <link rel="stylesheet" href="C:\Users\Asus\Downloads\New folder\magnifying-glass-solid.svg">
+</head>
+<body>
+    <header>
+        <a href="#" class="logo"><i class="fas fa-trash"></i>waste.</a>
+    <nav class="navbar">
+      <a href="#keranjang">Produk</a>
+      <a href="/penjualan" id="penjualan-show">Penjualan</a>
+      <a href="#about">about</a>
+    </nav>
+    <div class="icons">
+      <i class="fas fa-bars" id="menu-bars"></i>
+      <i class="fas fa-search" id="search-icon"></i>
+      <a href="#" class="fas fa-heart"></a>
+      <a href="#" class="fas fa-shopping-cart"></a>
+    </div>
+    </header>
+    <section>
+        {% if semuaData %}
+        <form action="">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Gambar</th>
+                        <th>Nama</th>
+                        <th>Harga</th>
+                        <th>Deskripsi</th>
+                        <th class="tombol-aksi">aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for satuData in semuaData %}
+                        <tr>
+                            <td><img src="data:image/png;base64,{{ satuData[0] }}" /></td>
+                            <td><p>{{satuData[1]}}</p></td>
+                            <td><p>{{satuData[2]}}</p></td>
+                            <td><p>{{satuData[3]}}</p></td>
+                            <td class="tombol-aksi">
+                                <button class="tombol-edit">Edit</button>
+                                <button>Hapus</button>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </form>
+    {% endif %}
+
+    <div id="popup">
+        <form method="POST" enctype="multipart/form-data">
+          <h2>PENJUALAN1</h2>
+          <div id="form">
+            <div id="gambar-form">
+              <h3>Gambar Barang</h3>
+              <input type="file" id="gambar-input" name="gambar">
+              <div class="gambar-preview"><img id="gambar-preview" name="gambar"></div>
+            </div>
+            <div id="deskripsi-form">
+              <h3>Deskripsi Barang</h3>
+              <label for="nama-input">Nama Barang:</label>
+              <input class="nama-input" type="text" id="nama-input" name="nama">
+      
+              <label for="harga-input">Harga Barang:</label>
+              <input type="text" id="harga-input" name="harga">
+      
+              <label for="deskripsi-input">Deskripsi Barang:</label>
+              <input type="text" id="deskripsi-input" name="deskripsi"></input>
+              <button id="submit-button" type="submit">Submit</button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+    <form action="">
+        <button id="tambah-barang">Tambah Barang</button>
+    </form>
+    </section>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script>
+        const editBtn = document.querySelectorAll(".tombol-edit");
+        const popup1 = document.getElementById("popup1");
+        const popup = document.getElementById("popup");
+        const gambarInput = document.getElementById("gambar-input");
+        const gambarPreview = document.getElementById("gambar-preview");
+        const namaInput = document.getElementById("nama-input");
+        const hargaInput = document.getElementById("harga-input");
+        const deskripsiInput = document.getElementById("deskripsi-input");
+        const submitButton = document.getElementById("submit-button");
+
+        editBtn.addEventListener("click", function() {
+        popup.style.display = "block";
+        body.style.background = "black"
+        });
+
+        popup1.addEventListener('click', function(event) {
+            if (event.target === this) {
+            // event berasal dari elemen induk (popup), bukan dari elemen di dalamnya
+            popup1.style.display = 'none';
+        }
+        });
+
+        popup.addEventListener("click", function() {
+            popup.style.display = "none";
+        })
+
+        gambarInput.addEventListener("change", function() {
+            const file = this.files[0];
+            if (file) {
+            const reader = new FileReader();
+            reader.addEventListener("load", function() {
+                gambarPreview.setAttribute("src", this.result);
+            });
+            reader.readAsDataURL(file);
+            }
+        });
+    </script>
+</body>
+</html>

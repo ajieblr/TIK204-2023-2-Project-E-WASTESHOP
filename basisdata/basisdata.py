@@ -15,6 +15,19 @@ def buatTabelUser():
   koneksi.execute(sql)
   koneksi.close()
 
+def buatTabelGambar():
+  koneksi = sqlite3.connect("EWS.db")
+
+  sql = """CREATE TABLE IF NOT EXISTS gambar (
+          id INTEGER PRIMARY KEY,
+          username TEXT,
+          gambar BLOB,
+          nama TEXT,
+          harga TEXT,
+          deskripsi TEXT);"""
+  koneksi.execute(sql)
+  koneksi.close()
+
 def tambahUser(username, email, password):
   koneksi = sqlite3.connect("EWS.db")
   
