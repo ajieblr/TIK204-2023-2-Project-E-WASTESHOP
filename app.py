@@ -128,6 +128,10 @@ def detail(id):
     except:    
         return redirect(url_for('login'))
 
+@app.route('/about')
+def about():
+    return render_template('about.j2')
+
 @app.route('/toko', methods=['GET', 'POST'])
 def toko():
     try:
