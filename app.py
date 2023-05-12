@@ -90,15 +90,18 @@ def login_required(f):
 
 @app.route('/home')
 def home():
-    username=session['username']
-    rows = Gambar.ambilBarangTokoOrang(username)
+    try:
+        username=session['username']
+        rows = Gambar.ambilBarangTokoOrang(username)
 
-    daftar = []
-    for row in rows:
-        gambar = base64.b64encode(row[0]).decode('ascii')
-        daftar.append((gambar, row[1], row[2], row[3], row[4]))
+        daftar = []
+        for row in rows:
+            gambar = base64.b64encode(row[0]).decode('ascii')
+            daftar.append((gambar, row[1], row[2], row[3], row[4]))
 
-    return render_template('home.j2', semuaData=daftar, username=session['username'])
+        return render_template('home.j2', semuaData=daftar, username=session['username'])
+    except:
+        return redirect(url_for('login'))
 
 @app.route('/suka/<string:id>')
 def suka(id):
@@ -107,72 +110,89 @@ def suka(id):
 
 @app.route('/detail/<string:id>')
 def detail(id):
-    username=session['username']
-    daftar = []
+    try:
+        username=session['username']
+        daftar = []
 
-    row = Gambar.ambilSatuBarang(id)
-    gambar = base64.b64encode(row[0]).decode('ascii')
-    daftar.append((gambar, row[1], row[2], row[3], row[4]))
-    print(row)
+        row = Gambar.ambilSatuBarang(id)
+        gambar = base64.b64encode(row[0]).decode('ascii')
+        daftar.append((gambar, row[1], row[2], row[3], row[4]))
+        print(row)
 
-    # for row in rows:
-    #     gambar = base64.b64encode(row[0]).decode('ascii')
-    #     daftar.append((gambar, row[1], row[2], row[3], row[4]))
+        # for row in rows:
+        #     gambar = base64.b64encode(row[0]).decode('ascii')
+        #     daftar.append((gambar, row[1], row[2], row[3], row[4]))
 
-    return render_template('detail.j2', semuaData=daftar, username=session['username'])
-    
-
+        return render_template('detail.j2', semuaData=daftar, username=session['username'])
+    except:    
+        return redirect(url_for('login'))
 
 @app.route('/toko', methods=['GET', 'POST'])
 def toko():
-    if request.method == 'POST':
+    try:
+        if request.method == 'POST':
+            username=session['username']
+            nama = request.form['nama']
+            filename = request.files['gambar'].read()
+            harga = request.form['harga']
+            deskripsi = request.form['deskripsi']
+
+            Gambar.tambahGambar(username, filename, nama, harga, deskripsi)
+
+            rows = Gambar.ambilBarangSatuToko(username)
+
+            daftar = []
+            for row in rows:
+                gambar = base64.b64encode(row[0]).decode('ascii')
+                daftar.append((gambar, row[1], row[2], row[3], row[4]))
+
+            return render_template('toko.j2', semuaData=daftar, username=session['username'])
+        
         username=session['username']
-        nama = request.form['nama']
-        filename = request.files['gambar'].read()
-        harga = request.form['harga']
-        deskripsi = request.form['deskripsi']
-
-        Gambar.tambahGambar(username, filename, nama, harga, deskripsi)
-
         rows = Gambar.ambilBarangSatuToko(username)
 
         daftar = []
         for row in rows:
             gambar = base64.b64encode(row[0]).decode('ascii')
             daftar.append((gambar, row[1], row[2], row[3], row[4]))
-
         return render_template('toko.j2', semuaData=daftar, username=session['username'])
-    
-    username=session['username']
-    rows = Gambar.ambilBarangSatuToko(username)
-
-    daftar = []
-    for row in rows:
-        gambar = base64.b64encode(row[0]).decode('ascii')
-        daftar.append((gambar, row[1], row[2], row[3], row[4]))
-    return render_template('toko.j2', semuaData=daftar, username=session['username'])
+    except:
+        return redirect(url_for('login'))
 
 @app.route("/edit/<string:id>", methods=['GET', 'POST'])
 def edit(id):
-    if request.method == 'POST':
-        username=session['username']
-        nama = request.form['nama']
-        filename = request.files['gambar'].read()
-        harga = request.form['harga']
-        deskripsi = request.form['deskripsi']
+    try:
+        if request.method == 'POST':
+            username=session['username']
+            nama = request.form['nama']
+            filename = request.files['gambar'].read()
+            harga = request.form['harga']
+            deskripsi = request.form['deskripsi']
 
-        Gambar.ubahBarang(id, filename, nama, harga, deskripsi)
+            Gambar.ubahBarang(id, filename, nama, harga, deskripsi)
 
-        rows = Gambar.ambilBarangSatuToko(username)
+            rows = Gambar.ambilBarangSatuToko(username)
 
-        daftar = []
-        for row in rows:
-            gambar = base64.b64encode(row[0]).decode('ascii')
-            daftar.append((gambar, row[1], row[2], row[3], row[4]))
+            daftar = []
+            for row in rows:
+                gambar = base64.b64encode(row[0]).decode('ascii')
+                daftar.append((gambar, row[1], row[2], row[3], row[4]))
 
+            return redirect(url_for('toko'))
+        # print(id)
+        return render_template('editGambar.j2', username=session['username'])
+    except:
+        return redirect(url_for('login'))
+
+@app.route("/hapus/<string:id>")
+def hapus(id):
+    try:
+        Gambar.hapusBarang(id)
+        print('berhasil')
         return redirect(url_for('toko'))
-    print(id)
-    return render_template('editGambar.j2', username=session['username'])
+    except:
+        return redirect(url_for('login'))
+
 
 @app.route('/forgot_password', methods=['GET', 'POST'])
 def forgotPass():
